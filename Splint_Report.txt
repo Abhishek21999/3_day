@@ -1,0 +1,20 @@
+Splint 3.1.2 --- 20 Feb 2018
+
+../inc/headers.h:9: Include file <dirent.h> matches the name of a POSIX
+    library, but the POSIX library is not being used.  Consider using +posixlib
+    or +posixstrictlib to select the POSIX library, or -warnposix to suppress
+    this message.
+  Header name matches a POSIX header, but the POSIX library is not selected.
+  (Use -warnposixheaders to inhibit warning)
+../inc/headers.h:11: Include file <sys/stat.h> matches the name of a POSIX
+    library, but the POSIX library is not being used.  Consider using +posixlib
+    or +posixstrictlib to select the POSIX library, or -warnposix to suppress
+    this message.
+../inc/headers.h:13: Include file <unistd.h> matches the name of a POSIX
+    library, but the POSIX library is not being used.  Consider using +posixlib
+    or +posixstrictlib to select the POSIX library, or -warnposix to suppress
+    this message.
+RSE_init.c:44:16: Parse Error. (For help on parse errors, see splint -help
+                        parseerrors.)
+*** Cannot continue.
+

@@ -1,0 +1,106 @@
+        -:    0:Source:RSE_init.c
+        -:    0:Graph:RSE_init.gcno
+        -:    0:Data:RSE_init.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/************************************************************************************
+        -:    2:
+        -:    3:**
+        -:    4:**        DESCRIPTION    :    Sprint(Remote Search Engine)
+        -:    5:**
+        -:    6:**       last updated    :    07-04-2023
+        -:    7:**
+        -:    8:**
+        -:    9:************************************************************************************/
+        -:   10:
+        -:   11:#include <headers.h>
+        -:   12:#include<log.h>
+        -:   13:
+        -:   14:#define MAX 1024
+        -:   15:
+        -:   16:char path[MAX];
+        -:   17:/************************************************************************************
+        -:   18:**     FUNCTION NAME     :     main
+        -:   19:**
+        -:   20:**    DESCRIPTION        :     Displaying the user interface /providing options and 
+        -:   21:**                             calling operation functions 
+        -:   22:**
+        -:   23:**     RETURNS           :     Returns an integer(EXIT_SUCCESS) 
+        -:   24:**
+        -:   25:**
+        -:   26:**     Created by        :    Group-3
+        -:   27:************************************************************************************/
+        -:   28:
+        -:   29:int searchByWord();
+        -:   30:int searchByFilename();
+        -:   31:int openWithAbsolutePath();
+        1:   32:int main()
+        -:   33:{
+        1:   34:	log_set_quiet(false);
+        1:   35:	log_set_level(LOG_TRACE);
+        1:   36:    int flag = 1;
+        1:   37:    char * username = getlogin();
+        1:   38:    strcpy(path,"/home2/");
+        1:   39:    strcat(path, username);
+        1:   40:    strcat(path, "/");
+        -:   41:    
+        -:   42:    do{
+        -:   43:        //for user interface details/design
+       18:   44:        LINE
+        -:   45:    
+       18:   46:        printf("\t\t\tWelcome to Remote Search Engine(RSE)\t\n\n");
+        -:   47:        
+       18:   48:        LINE
+       18:   49:                printf("1. Search by word/sentence\n");
+       18:   50:                printf("2. Search by filename\n");
+       18:   51:                printf("3. Open file with absolute path\n");
+       18:   52:                printf("4. Quit\n");
+       18:   53:                LINE
+       18:   54:                printf("Choose an option(1-4):");
+        -:   55:
+        -:   56:                char ch[MAX_LENGTH];
+        -:   57:                //for taking the input choice among the options provided
+       18:   58:                scanf("%s", ch);
+        -:   59:                
+       18:   60:                getchar();//for clearing next line from buffer
+       18:   61:                printf("\n");
+        -:   62:
+       18:   63:                if(strlen(ch) > 1){
+    #####:   64:                    ch[0] = '6';
+        -:   65:                }
+        -:   66:
+        -:   67:                //handeling user cases 
+       18:   68:                switch (ch[0])
+        -:   69:                {
+        5:   70:                    case '1':
+        -:   71:                        //function call to search by word or sentence in our file system
+        5:   72:                        searchByWord();
+        5:   73:                        break;
+        -:   74:                    
+        8:   75:                    case '2':
+        -:   76:                        // function call to search by file name in our file system
+        8:   77:                        searchByFilename();
+        8:   78:                        break;
+        -:   79:
+        4:   80:                    case '3':
+        -:   81:                        //function call to open file with given absolute file path
+        4:   82:                        openWithAbsolutePath();
+        4:   83:                        break;
+        1:   84:                    case '4':
+        -:   85:                        // for exit
+        1:   86:                        exit(EXIT_SUCCESS);
+        -:   87:                    
+    #####:   88:                    default:
+        -:   89:                        //to handle unwanted choices
+    #####:   90:                        log_warn("\nInvalid choice please select among(1-4) only..\n\n");
+    #####:   91:                        break;
+        -:   92:                }
+        -:   93:                
+       17:   94:    }while(flag==1);//to recur among the choices 
+        -:   95:
+    #####:   96:    return(EXIT_SUCCESS);
+        -:   97:}
+        -:   98:
+        -:   99:
+        -:  100:
+        -:  101:
